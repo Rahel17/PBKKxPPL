@@ -192,11 +192,11 @@
                 <div class="formbold-input-flex">
                     <div>
                         <label for="bukti_transaksi" class="formbold-form-label">Bukti Transaksi</label>
-                        <input type="boolean" name="bukti_transaksi" id="bukti_transaksi" class="formbold-form-input" placeholder="Ada/Tidak" required>
+                        <input type="boolean" name="bukti_transaksi" id="bukti_transaksi" class="formbold-form-input" placeholder="1/0" required>
                     </div>
                     <div>
                         <label for="status_spj" class="formbold-form-label">Status SPJ</label>
-                        <input type="enum" name="status_spj" id="status_spj" class="formbold-form-input" placeholder="Status SPJ" required>
+                        <input type="enum" name="status_spj" id="status_spj" class="formbold-form-input" placeholder="Diserahkan/Belum Diserahkan" required>
                     </div>
                 </div>
                 <button type="submit" class="formbold-btn">Submit</button>

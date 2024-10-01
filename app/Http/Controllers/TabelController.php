@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Uang;
 use Illuminate\Http\Request;
 
+
 class TabelController extends Controller
 {
     /**
@@ -30,7 +31,7 @@ class TabelController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'no' => 'required',
+            'no' => 'required | numeric',
             'hari_tanggal' => 'required|date', 
             'uraian' => 'required|string',
             'bidang' => 'required|string',
@@ -39,11 +40,11 @@ class TabelController extends Controller
             'total' => 'required|numeric', 
             'penerima_pemberi' => 'required|string',
             'bukti_transaksi' => 'required|boolean', 
-            'status_spj' => 'required|string', 
+            'status_spj' => 'required|in:Diserahkan,Belum Diserahkan', 
         ]);
 
         Uang::create($request->all());
-        return redirect()->route('index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route ('tabel.index')->with('sukses', 'Data Berhasil Ditambahkan');
 
         
     }

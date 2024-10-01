@@ -34,13 +34,12 @@
       <aside
         class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
       >
-        <div class="py-4 text-gray-500 dark:text-gray-400">
-          <a
-            class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
-            href="#"
-          >
-            AdminKeu
-          </a>
+        <div class="py-4 px-4 text-gray-500 dark:text-gray-400">
+          <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#" style="display: flex; align-items: center;">
+            <img src="{{ asset('assets/img/logo-himatif.png') }}" alt="" style="width: 40px; height: 40px; margin-right: 10px; object-fit: contain;">
+            <h1 class="sitename">AdminKeu HIMATIF</h1>
+        </a>
+        
           <ul class="mt-6"></ul>
           <ul>
             <li class="relative px-3 py-3">
@@ -104,11 +103,9 @@
         @keydown.escape="closeSideMenu"
       >
         <div class="py-4 text-gray-500 dark:text-gray-400">
-          <a
-            class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
-            href="#"
-          >
-            AdminKeu
+          <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
+            <img src="{{ asset('assets/img/logo-himatif.png') }}" alt="">
+            <h1>class="sitename">AdminKeu HIMATIF</h1>
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
@@ -204,13 +201,13 @@
                   >
                     <tr class="text-gray-700 dark:text-gray-400">
                       @foreach ($data as $dt)
-                      <td class="px-4 py-3", class="font-semibold">{{ $dt->No }}</td>
+                      <td class="px-4 py-3", class="font-semibold">{{ $dt->no }}</td>
                       <td class="px-4 py-3 text-sm">{{ $dt->hari_tanggal }}</td>
-                      <td class="px-4 py-3 text-sm">{{ $dt->Uraian }}</td>
-                      <td class="px-4 py-3 text-sm">{{ $dt->Bidang }}</td>
-                      <td class="px-4 py-3 text-sm">{{ 'Rp ' . number_format($dt->Pemasukan, 0, ',', '.') }}</td>
-                      <td class="px-4 py-3 text-sm">{{ 'Rp ' . number_format($dt->Pengeluaran, 0, ',', '.') }}</td>
-                      <td class="px-4 py-3 text-sm">{{ 'Rp ' . number_format($dt->Total, 0, ',', '.') }}</td>
+                      <td class="px-4 py-3 text-sm">{{ $dt->uraian }}</td>
+                      <td class="px-4 py-3 text-sm">{{ $dt->bidang }}</td>
+                      <td class="px-4 py-3 text-sm">{{ 'Rp ' . number_format($dt->pemasukan, 0, ',', '.') }}</td>
+                      <td class="px-4 py-3 text-sm">{{ 'Rp ' . number_format($dt->pengeluaran, 0, ',', '.') }}</td>
+                      <td class="px-4 py-3 text-sm">{{ 'Rp ' . number_format($dt->total, 0, ',', '.') }}</td>
                       <td class="px-4 py-3 text-sm">{{ $dt->penerima_pemberi }}</td>
                       <td class="px-4 py-3 text-sm">{{ $dt->bukti_transaksi ? 'Ada' : 'Tidak Ada' }}</td>
                       <td class="px-4 py-3 text-sm">{{ $dt->status_spj }}</td>
