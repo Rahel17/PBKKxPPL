@@ -196,9 +196,10 @@
                       <th class="px-4 py-3">StatusSPJ</th>
                     </tr>
                   </thead>
-                  <tbody
-                    class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
-                  >
+                  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                    @if (session('sukses'))
+                        <div>{{ session('sukses') }}</div>
+                    @endif
                     <tr class="text-gray-700 dark:text-gray-400">
                       @foreach ($data as $dt)
                       <td class="px-4 py-3", class="font-semibold">{{ $dt->no }}</td>

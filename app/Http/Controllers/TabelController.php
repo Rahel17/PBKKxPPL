@@ -43,8 +43,10 @@ class TabelController extends Controller
             'status_spj' => 'required|in:Diserahkan,Belum Diserahkan', 
         ]);
 
-        Uang::create($request->all());
-        return redirect()->route ('tabel.index')->with('sukses', 'Data Berhasil Ditambahkan');
+       $uang = Uang::create($request->all());
+       if($uang){
+        return redirect()->back()->with('success', 'Data Berhasil Ditambahkan');
+       }
 
         
     }
