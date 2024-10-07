@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('uang1', function (Blueprint $table) {
             $table->id();
-            $table->integer('no');
             $table->date('hari_tanggal');
             $table->string('uraian');
             $table->string('bidang');

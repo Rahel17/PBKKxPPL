@@ -176,6 +176,14 @@
               class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
               Catatan Uang
             </h2>
+
+            <!-- Button Create Data Baru -->
+            <div class="mb-4">
+              <a href="{{ route('create') }}" class="px-4 py-2 font-semibold text-white bg-purple-600 rounded-lg hover:bg-purple-700">
+                Masukkan Data Baru
+              </a>
+            </div>
+
             <!-- New Table -->
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
@@ -194,6 +202,7 @@
                       <th class="px-4 py-3">PenerimaPemberi</th>
                       <th class="px-4 py-3">Bukti</th>
                       <th class="px-4 py-3">StatusSPJ</th>
+                      <th class="px-4 py-3">Aksi</th>
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -202,7 +211,7 @@
                     @endif
                     <tr class="text-gray-700 dark:text-gray-400">
                       @foreach ($data as $dt)
-                      <td class="px-4 py-3", class="font-semibold">{{ $dt->no }}</td>
+                      <td class="px-4 py-3", class="font-semibold">{{ $loop->iteration }}</td>
                       <td class="px-4 py-3 text-sm">{{ $dt->hari_tanggal }}</td>
                       <td class="px-4 py-3 text-sm">{{ $dt->uraian }}</td>
                       <td class="px-4 py-3 text-sm">{{ $dt->bidang }}</td>
@@ -212,14 +221,34 @@
                       <td class="px-4 py-3 text-sm">{{ $dt->penerima_pemberi }}</td>
                       <td class="px-4 py-3 text-sm">{{ $dt->bukti_transaksi ? 'Ada' : 'Tidak Ada' }}</td>
                       <td class="px-4 py-3 text-sm">{{ $dt->status_spj }}</td>
+                      <td class="px-4 py-3 flex space-x-2">
+                        <!-- Edit Button -->
+                        <a href="{{ route('edit', $dt->id) }}" class="flex items-center px-3 py-1 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-150">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M17.414 2.586a2 2 0 010 2.828l-9.828 9.828a1 1 0 01-.293.293l-4 2a1 1 0 01-1.316-1.316l2-4a1 1 0 01.293-.293l9.828-9.828a2 2 0 012.828 0zM15 6.414L13.586 5 5 13.586V15h1.414L15 6.414z" />
+                          </svg>
+                          Edit
+                        </a>
+                  
+                        <!-- Delete Button -->
+                        <form action="{{ route('destroy', $dt->id) }}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="flex items-center px-3 py-1 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors duration-150">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M6 2a1 1 0 011-1h6a1 1 0 011 1v1h5a1 1 0 110 2H4a1 1 0 110-2h2V2zm1 4a1 1 0 00-1 1v9a1 1 0 001 1h6a1 1 0 001-1V7a1 1 0 00-1-1H7z" clip-rule="evenodd" />
+                            </svg>
+                            Delete
+                          </button>
+                        </form>
+                      </td>
                     </tr>
                       @endforeach
                   </tbody>
                 </table>
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">
-                        <div class="flex items-center text-sm">
-            </div>
+                        <div class="flex items-center text-sm"></div>
                   </div>
                 </div>
               </div>

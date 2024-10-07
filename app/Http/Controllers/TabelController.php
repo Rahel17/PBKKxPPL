@@ -31,19 +31,19 @@ class TabelController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'no' => 'required | numeric',
             'hari_tanggal' => 'required|date', 
-            'uraian' => 'required|string',
-            'bidang' => 'required|string',
-            'pemasukan' => 'required|numeric', 
-            'pengeluaran' => 'required|numeric', 
-            'total' => 'required|numeric', 
-            'penerima_pemberi' => 'required|string',
-            'bukti_transaksi' => 'required|boolean', 
+            'uraian' => 'required',
+            'bidang' => 'required',
+            'pemasukan' => 'required', 
+            'pengeluaran' => 'required', 
+            'total' => 'required', 
+            'penerima_pemberi' => 'required',
+            'bukti_transaksi' => 'required', 
             'status_spj' => 'required|in:Diserahkan,Belum Diserahkan', 
         ]);
 
        $uang = Uang::create($request->all());
+       $uang->save();
        if($uang){
         return redirect()->back()->with('success', 'Data Berhasil Ditambahkan');
        }
@@ -62,24 +62,42 @@ class TabelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $uang = Uang::find($id);
+        return view('edit', ['uang' => $uang]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    public function update(Request $request, $id)
+{
+    $validated = $request->validate([
+        'hari_tanggal' => 'required',
+        'uraian' => 'required',
+        'bidang' => 'required',
+        'pemasukan' => 'required',
+        'pengeluaran' => 'required',
+        'total' => 'required',
+        'penerima_pemberi' => 'required',
+        'bukti_transaksi' => 'required',
+        'status_spj' => 'required|in:Diserahkan,Belum Diserahkan',
+    ]);
+
+    $uang = Uang::findOrFail($id); // Cari data Uang berdasarkan ID
+    $uang->update($validated);
+    return redirect('/tabel')->with('success', 'Data Berhasil Diubah');
+}
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $uang = Uang::find($id);
+        $uang->delete();
+        return redirect('/tabel')->with('success', 'Data Berhasil Dihapus');
     }
 }

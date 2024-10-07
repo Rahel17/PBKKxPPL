@@ -10,7 +10,6 @@ class Uang extends Model
     use HasFactory;
     protected $table = 'uang1';
     protected $fillable = [
-        'no',
         'hari_tanggal',
         'uraian',
         'bidang',

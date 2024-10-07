@@ -138,61 +138,89 @@
 <body>
     <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
-            <form action="{{ route('store') }}" method="post">
+            <form action="{{ route('update', $uang->id)}}" method="POST">
+                @method('PUT')
                 @csrf
                 <div class="formbold-form-title">
-                    <h2>Input Data</h2>
+                    <h2>Ada kesalahan?</h2>
                     <p>Lakukan input dengan benar agar tidak merugi</p>
                 </div>
 
                 <div class="formbold-input-flex">
                     <div>
                         <label for="hari_tanggal" class="formbold-form-label">Hari/Tanggal</label>
-                        <input type="date" name="hari_tanggal" id="hari_tanggal" class="formbold-form-input" required>
+                        <input type="date" name="hari_tanggal" id="hari_tanggal" class="formbold-form-input" required value="{{ old('hari_tanggal', $uang->hari_tanggal )}}">
+                        @error("hari_tanggal")
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
 
                 <div class="formbold-input-flex">
                     <div>
                         <label for="uraian" class="formbold-form-label">Uraian</label>
-                        <input type="text" name="uraian" id="uraian" class="formbold-form-input" placeholder="Uraian" required>
+                        <input type="text" name="uraian" id="uraian" class="formbold-form-input" placeholder="Uraian" required value="{{ old('uraian', $uang->uraian )}}">
+                        @error("uraian")
+                            {{ $message }}
+                        @enderror
                     </div>
                     <div>
                         <label for="bidang" class="formbold-form-label">Bidang</label>
-                        <input type="text" name="bidang" id="bidang" class="formbold-form-input" placeholder="Bidang" required>
+                        <input type="text" name="bidang" id="bidang" class="formbold-form-input" placeholder="Bidang" required value="{{ old('bidang', $uang->bidang )}}">
+                        @error("bidang")
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
 
                 <div class="formbold-input-flex">
                     <div>
                         <label for="pemasukan" class="formbold-form-label">Pemasukan</label>
-                        <input type="decimal" name="pemasukan" id="pemasukan" class="formbold-form-input" placeholder="Pemasukan" required>
+                        <input type="decimal" name="pemasukan" id="pemasukan" class="formbold-form-input" placeholder="Pemasukan" required value="{{ old('pemasukan', $uang->pemasukan )}}">
+                        @error("pemasukan")
+                            {{ $message }}
+                        @enderror
                     </div>
                     <div>
                         <label for="pengeluaran" class="formbold-form-label">Pengeluaran</label>
-                        <input type="decimal" name="pengeluaran" id="pengeluaran" class="formbold-form-input" placeholder="Pengeluaran" required>
+                        <input type="decimal" name="pengeluaran" id="pengeluaran" class="formbold-form-input" placeholder="Pengeluaran" required value="{{ old('pengeluaran', $uang->pengeluaran )}}">
+                        @error("pengeluaran")
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
 
                 <div class="formbold-input-flex">
                     <div>
                         <label for="total" class="formbold-form-label">Total</label>
-                        <input type="decimal" name="total" id="total" class="formbold-form-input" placeholder="Total" required>
+                        <input type="decimal" name="total" id="total" class="formbold-form-input" placeholder="Total" required value="{{ old('total', $uang->total )}}">
+                        @error("total")
+                            {{ $message }}
+                        @enderror
                     </div>
                     <div>
                         <label for="penerima_pemberi" class="formbold-form-label">Penerima/Pemberi</label>
-                        <input type="text" name="penerima_pemberi" id="penerima_pemberi" class="formbold-form-input" placeholder="Penerima/Pemberi" required>
+                        <input type="text" name="penerima_pemberi" id="penerima_pemberi" class="formbold-form-input" placeholder="Penerima/Pemberi" required value="{{ old('penerima_pemberi', $uang->penerima_pemberi )}}">
+                        @error("penerima_pemberi")
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
 
                 <div class="formbold-input-flex">
                     <div>
                         <label for="bukti_transaksi" class="formbold-form-label">Bukti Transaksi</label>
-                        <input type="boolean" name="bukti_transaksi" id="bukti_transaksi" class="formbold-form-input" placeholder="1/0" required>
+                        <input type="boolean" name="bukti_transaksi" id="bukti_transaksi" class="formbold-form-input" placeholder="1/0" required value="{{ old('bukti_transaksi', $uang->bukti_transaksi )}}">
+                        @error("bukti_transaksi")
+                            {{ $message }}
+                        @enderror
                     </div>
                     <div>
                         <label for="status_spj" class="formbold-form-label">Status SPJ</label>
-                        <input type="enum" name="status_spj" id="status_spj" class="formbold-form-input" placeholder="Diserahkan/Belum Diserahkan" required>
+                        <input type="enum" name="status_spj" id="status_spj" class="formbold-form-input" placeholder="Diserahkan/Belum Diserahkan" required value="{{ old('status_spj', $uang->status_spj )}}">
+                        @error("status_spj")
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <button type="submit" class="formbold-btn">Submit</button>
