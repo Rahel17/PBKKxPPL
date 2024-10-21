@@ -180,6 +180,11 @@
                         <input type="decimal" name="total" id="total" class="formbold-form-input" placeholder="Total" required>
                     </div>
                     <div>
+                        {{-- <select name="anggota_id">
+                            @foreach ($anggotas as $anggota)
+                                <option value="{{ $anggota->id }}">{{ $anggota->nama }}</option>
+                            @endforeach
+                        </select> --}}
                         <label for="penerima_pemberi" class="formbold-form-label">Penerima/Pemberi</label>
                         <input type="text" name="penerima_pemberi" id="penerima_pemberi" class="formbold-form-input" placeholder="Penerima/Pemberi" required>
                     </div>

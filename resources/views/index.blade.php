@@ -199,7 +199,8 @@
                       <th class="px-4 py-3">Pemasukan</th>
                       <th class="px-4 py-3">Pengeluaran</th>
                       <th class="px-4 py-3">Total</th>
-                      <th class="px-4 py-3">PenerimaPemberi</th>
+                      {{-- <th class="px-4 py-3">PenerimaPemberi</th> --}}
+                      <th class="px-4 py-3">Panerima/Pemberi</th>
                       <th class="px-4 py-3">Bukti</th>
                       <th class="px-4 py-3">StatusSPJ</th>
                       <th class="px-4 py-3">Aksi</th>
@@ -218,7 +219,8 @@
                       <td class="px-4 py-3 text-sm">{{ 'Rp ' . number_format($dt->pemasukan, 0, ',', '.') }}</td>
                       <td class="px-4 py-3 text-sm">{{ 'Rp ' . number_format($dt->pengeluaran, 0, ',', '.') }}</td>
                       <td class="px-4 py-3 text-sm">{{ 'Rp ' . number_format($dt->total, 0, ',', '.') }}</td>
-                      <td class="px-4 py-3 text-sm">{{ $dt->penerima_pemberi }}</td>
+                      {{-- <td class="px-4 py-3 text-sm">{{ $dt->penerima_pemberi }}</td> --}}
+                      <td class="px-4 py-3 text-sm">{{ $dt->anggota->nama }}</td>
                       <td class="px-4 py-3 text-sm">{{ $dt->bukti_transaksi ? 'Ada' : 'Tidak Ada' }}</td>
                       <td class="px-4 py-3 text-sm">{{ $dt->status_spj }}</td>
                       <td class="px-4 py-3 flex space-x-2">

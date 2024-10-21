@@ -40,6 +40,7 @@ class TabelController extends Controller
             'penerima_pemberi' => 'required',
             'bukti_transaksi' => 'required', 
             'status_spj' => 'required|in:Diserahkan,Belum Diserahkan', 
+            'anggota_id' => 'required|exists:anggotas,id',
         ]);
 
        $uang = Uang::create($request->all());
@@ -65,7 +66,7 @@ class TabelController extends Controller
     public function edit($id)
     {
         $uang = Uang::find($id);
-        return view('edit', ['uang' => $uang]);
+        return view('edit', ['uangs' => $uang]);
     }
 
     /**
